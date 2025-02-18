@@ -1,14 +1,14 @@
 import React from "react";
+import ItemList from "./ItemList";
 
-function ItemListContainer (props){
-
+function ItemListContainer (){
+    
 
     return (
         <>
             <div style={{textAlign: "center", fontSize: "2rem", fontWeight: "bold"}}>
-                <p>Hola,{props.nombre} {props.apellido}. Bienvenido a {props.tienda}!</p> 
+                <ItemList/>
             </div>
-            
         </>
     )
 }
