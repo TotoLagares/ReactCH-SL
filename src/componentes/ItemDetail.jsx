@@ -2,7 +2,7 @@ import React from "react";
 import "./ItemDetail.css";
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
-import {fetchDataId} from "../async";
+import {fetchDataId} from "../utils/async";
 
 function ItemDetail() {
   const { id } = useParams();
@@ -14,28 +14,28 @@ function ItemDetail() {
     });
   }, [id]);
 
+
   return (
     <>
-        <h4>detalles</h4>
-            <div className="product-card">
-              <div className="product-tumb">
-                <img src={prod.image} alt=""></img>
+      <div className="detail-container">
+          <div className="detail-card">
+              <div className="detail-image">
+                  <img src={prod.image} alt={prod.title} />
               </div>
-              <div className="product-details">
-                <span className="product-catagory">{prod.category}</span>
-                <h4 style={{ fontSize: 20 }}>{prod.title}</h4>
-                <p>{prod.description}</p>
-                <div className="product-bottom-details">
-                  <div className="product-price">${prod.price}</div>
-                  <div className="product-links">
-                    <a href=""><i className="fa fa-shopping-cart"></i></a>
+              <div className="detail-content">
+                  <span className="detail-category">{prod.category}</span>
+                  <h2 className="detail-title">{prod.title}</h2>
+                  <p className="detail-description">{prod.description}</p>
+                  <div className="detail-bottom">
+                      <span className="detail-price">${prod.price}</span>
+                      <button className="detail-button">Agregar al carrito</button>
                   </div>
-                </div>
               </div>
-            </div>
+          </div>
+      </div>
     </>
   );
-}
+};
 
 export default ItemDetail;
    

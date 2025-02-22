@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import { fetchData } from "../async";
+import { fetchData } from "../utils/async";
 import './ItemList.css';
 import { Link, useParams } from "react-router-dom";
-import { fetchDataCategory } from "../async";
+import { fetchDataCategory } from "../utils/async";
 
 export default function ItemList() {
     const [data, setData] = useState(0);
@@ -36,12 +36,12 @@ export default function ItemList() {
                             </div>
                             <div className="product-details">
                                 <span className="product-catagory">{item.category}</span>
-                                <h4 style={{fontSize:20}}><Link to={`/${item.id}`}>{item.title}</Link></h4>
+                                <h4 style={{fontSize:20,color:"#fbb62caa", margin:20}}>{item.title.slice(0,25)}...</h4>
                                 <p>{item.description.slice(0,100)}...</p>
-                                <div className="product-bottom-details">
+                                <div className="product-bottom-details" >
                                     <div className="product-price">${item.price}</div>
                                     <div className="product-links">
-                                        <a href=""><i className="fa fa-shopping-cart"></i></a>
+                                    <Link to={`/${item.id}`}><button className="info-button">Más Info</button></Link>
                                     </div>
                                 </div>
                             </div>

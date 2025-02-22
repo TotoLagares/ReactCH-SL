@@ -13,30 +13,58 @@ function NavBar(){
         setCategory(category);
         navigate(`/category/${category}`);
       };
+    
+    const handleHome = () =>{
+        navigate("/")
+    }
+    window.addEventListener('scroll', () => {
+        const navbar = document.querySelector('.navbar');
+        if (window.scrollY > 50) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
+    });
 
 
     return (
         <>
             <nav className="navbar">
-                <div className="nav-item">
-                    <ul className="menu">
-                        <button  onClick={() =>{handleCategoryClick("men's clothing")}}>tablas</button>
-                        <button onClick={() =>{handleCategoryClick("women's clothing")}}>Fijaciones</button>
-                        <button onClick={() =>{handleCategoryClick("jewelery")}}>Ropa</button>
-                        <button onClick={() =>{handleCategoryClick("electronics")}}>tablas</button>
-                    </ul>
-                </div>
-                <div className="nav-item">
-                    <div className="logo">
-                        <h1>SnowLife</h1>
-                    </div>
-                </div>
-                <div className="nav-item">
-                    <CartWidget/>
-                </div>
+            <div className="nav-left">
+                <h1 className="logo" onClick={handleHome}>
+                SnowLife
+                </h1>
+            </div>
+        
+            <ul className="nav-center">
+                <li>
+                <button onClick={() => handleCategoryClick("men's clothing")}>
+                    Tablas
+                </button>
+                </li>
+                <li>
+                <button onClick={() => handleCategoryClick("women's clothing")}>
+                    Fijaciones
+                </button>
+                </li>
+                <li>
+                <button onClick={() => handleCategoryClick("jewelery")}>
+                    Ropa
+                </button>
+                </li>
+                <li>
+                <button onClick={() => handleCategoryClick("electronics")}>
+                    Accesorios
+                </button>
+                </li>
+            </ul>
+        
+            <div className="nav-right">
+                <CartWidget />
+            </div>
             </nav>
-        </>        
-    )
+        </>
+      );       
 }   
 
 export default NavBar
